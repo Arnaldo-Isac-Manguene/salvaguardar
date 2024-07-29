@@ -1,20 +1,19 @@
-<footer x-data="{ open: false }" class="bg-white border-b border-gray-100 fixed-bottom">
+<footer x-data="{ open: false }" class="bg-white border-gray-100 ">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+    <div class=" mx-5 ">
+        <div class="mx-5">
+            <div class="d-flex mx-5 h-16">
+                <div class="offset-1 col-5 me-auto sm:-my-px sm:m-10 sm:flex">
+
                         {{  " ©Copright ".date('Y') }}
-                    </x-nav-link>
+
                 </div>
-                <div class="hidden space-x-10 sm:-my-px sm:m-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <div class="hidden sm:-my-px sm:m-10 sm:flex offset-1 col-3">
+
                         {{  __(' FENG - Faculdade de Engenharia ') }}
-                    </x-nav-link>
+                    
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

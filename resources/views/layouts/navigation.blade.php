@@ -15,6 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('projecto')" :active="request()->routeIs('projecto')">
+                        {{ __('Projecto') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('relatorio')" :active="request()->routeIs('relatorio')">
+                        {{ __('Relatório') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('notificacao')" :active="request()->routeIs('notificacao')">
+                        {{ __('Notificação') }}
+                    </x-nav-link>
+                    @if (Auth::user()->type == "admin" || Auth::user()->type == "esp")
+                        <x-nav-link :href="route('usuario.index')" :active="request()->routeIs('usuario.index')">
+                            {{ __('Usuários') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -23,7 +37,12 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div style="height:30px;">   
+                                {{ Auth::user()->name }}
+                                <p style="font-size: 10px;" class="block w-full text-end leading-5 text-blue-700 transition duration-150 ease-in-out">
+                                    {{ Auth::user()->type == "admin" ? 'Administrador' : (Auth::user()->type == "er" ? 'Engenheiro Residente' :(Auth::user()->type == "esp" ? 'Especialista Supervisor' : 'Supervisor'))  }}
+                                </p>
+                            </div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -35,17 +54,19 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-dropdown-link>
-
+                        <x-dropdown-link href="#">
+                            {{ __('menu-item') }}
+                        </x-dropdown-link>
+                        <hr>
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" class="d-flex" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                    {{ __('Sair') }}                                    
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -65,33 +86,33 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden w-auto z-3">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link  class="text-end" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-gray-200 text-end">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
 
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+            <div class="mt-3 space-y-1 ">
+                <x-responsive-nav-link class="text-end" :href="route('profile.edit')">
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" >
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                    <x-responsive-nav-link class="text-end" :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Terminar Sessão') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

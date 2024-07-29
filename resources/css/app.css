@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+#cardbody{
+    padding: 0%;
+    color:#34333c;
+    font-size: 40px;
+    font-weight: 700;
+}
+.h-auto{
+    text-decoration: none;
+}
+
+.div-search{
+    align-content: center;
+  justify-content: end;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+#project-search{
+    /* .form-control { */
+        background-image: url('https://res.cloudinary.com/dt9b7pad3/image/upload/v1502810110/angle-down-dark_dkyopo.png');
+        background-position: right center 5px;
+      }
+/* } */
+#text-search{
+    background:#ececec;
+    color:#000;
+    border-radius: 0px;
+    border-start-start-radius: 35px;
+    border-end-start-radius: 35px;
+    height: 35px;
+    border: 0#7de3d6;
+}
+#btn-search{
+    padding-inline: 5px;
+    font-size: 15px;
+    background:#95bdf2;
+    color:#000;
+    border-radius: 0px;
+    height: 35px;
+    border-top-right-radius: 35px;
+    border-end-end-radius: 35px;
+}
+
+.fas.fa-search{
+
+}
+
+.texto-piscante {
+    animation: blink 2s linear infinite;
+
+  }
+
+  .btn-delete{
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding-inline: 15px;
+    padding-block: 7px;
+    border-radius: 5px;
+  }
+
+  .btn-delete:hover{
+    background-color: #c40606;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+      color: #000;
+    }
+    50% {
+      opacity: 0.4;
+      color:rgb(228, 114, 114);
+    }
+    75% {
+        opacity: 0.8;
+        color:rgb(148, 11, 11);
+      }
+    100% {
+      opacity: 1;
+      color:rgb(58, 4, 4);
+    }
+  }

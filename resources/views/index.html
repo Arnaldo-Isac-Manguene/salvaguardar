@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Abas</title>
+    <!-- Inclua o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#produtos">Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#categorias">Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#telefones">Telefones</a>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3">
+            <div id="produtos" class="tab-pane fade show active">
+                <!-- Conteúdo da aba "Produtos" -->
+                <p>Lista de produtos fictícios:</p>
+                <ul>
+                    <li>Produto A</li>
+                    <li>Produto B</li>
+                    <li>Produto C</li>
+                </ul>
+            </div>
+            <div id="categorias" class="tab-pane fade">
+                <!-- Conteúdo da aba "Categorias" -->
+                <p>Categorias imaginárias:</p>
+                <ul>
+                    <li>Categoria X</li>
+                    <li>Categoria Y</li>
+                    <li>Categoria Z</li>
+                </ul>
+            </div>
+            <div id="telefones" class="tab-pane fade">
+                <!-- Conteúdo da aba "Telefones" -->
+                <p>Números de telefone fictícios:</p>
+                <ul>
+                    <li>(11) 1234-5678</li>
+                    <li>(22) 9876-5432</li>
+                    <li>(33) 5555-1234</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div  class="container mt-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#relatorio">Relatório 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#relatorioi">Relatório 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#relatorioii">Relatório 3</a>
+            </li>
+        </ul>
+        <div class="tab-content mt-2">
+            <div id="relatorio" class="tab-pane fade show active">
+                @include('relatorio.relatorios.relatorio')
+            </div>
+            <div id="relatorioi" class="tab-pane fade">
+                @include('relatorio.relatorios.relatorioi')
+            </div>
+            <div id="relatorioii" class="tab-pane fade">
+                @include('relatorio.relatorios.relatorioii')
+            </div>
+        </div>  
+    </div>
+        <!-- <div class="justify-content-end my-2 d-flex  me-2">
+            {{-- <a href="#" class="btn btn-primary">Salvar Relatório</a> --}}
+        </div> -->
+    <!-- Inclua o Bootstrap JS e o jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
