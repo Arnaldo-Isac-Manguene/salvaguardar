@@ -8,10 +8,10 @@
     {{-- @endif --}}
     
 
-    <div class="py-1 mx-5">
+    <div class="py-1 mx-5 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg  pb-2">
+                <div class="px-3 pt-1">
                     <ul class="nav nav-tabs">
                         <il class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#relatorio">Relatório 1</a>
@@ -23,15 +23,15 @@
                             <a class="nav-link" data-toggle="tab" href="#relatorioii">Relatório 3</a>
                         </il>
                     </ul>
-                    <div class="tab-content mt-2">
+                    <div class="tab-content mt-4">
                         <div id="relatorio" class="tab-pane fade show active">
-                            1 {{-- @include('relatorio.relatorios.relatorio') --}}
+                            1{{-- @include('relatorio.relatorios.relatorio') --}}
                         </div>
                         <div id="relatorioi" class="tab-pane fade">
-                            2 {{-- @include('relatorio.relatorios.relatorioi') --}}
+                            2{{-- @include('relatorio.relatorios.relatorio') --}}
                         </div>
                         <div id="relatorioii" class="tab-pane fade">
-                            3 {{-- @include('relatorio.relatorios.relatorioii') --}}
+                            3{{-- @include('relatorio.relatorios.relatorio') --}}
                         </div>
                     </div>  
                 </div>
