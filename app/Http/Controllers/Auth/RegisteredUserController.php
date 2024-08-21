@@ -29,6 +29,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        dd($request->name);
+        
         $request->name = 'Arnaldo Isac Manguene';
         $request->email = 'arnaldo@gmail.com';
         $request->type = 'admin';
@@ -39,7 +41,7 @@ class RegisteredUserController extends Controller
             'type' => ['required', 'string', 'max:55'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

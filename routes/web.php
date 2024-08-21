@@ -17,7 +17,15 @@ route::fallback(function(){
 
 
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+   
+    // $request->name = 'arnaldo';
+    // $request->email = 'arnaldo@gmail.com';
+    // $request->type = 'admin';
+    // $request->password = 'laravel1'   ; 
+    
+    // dd( User::create($request->all()));    
+
     return view('welcome');
 })->name('home');
 
@@ -68,9 +76,10 @@ Route::get('/usuarios', function (Request $request) {
 })->middleware(['auth', 'verified'])->name('usuario.index');
 
 Route::post('/usuarios/store', function (Request $request) {
+    // dd('aqui');
     User::create($request->all());
     return redirect()->route('usuario.index');
-})->middleware(['auth', 'verified'])->name('usuario.store');
+ })->middleware(['auth', 'verified'])->name('usuario.store');
 
 Route::get('/usuarios/show/{usuario}', function ($id) {
     $user = User::find($id);
@@ -93,14 +102,29 @@ Route::post('/projecto/store', function (Request $request) {
     return redirect()->route('projecto');
 })->middleware(['auth', 'verified'])->name('projecto.store');
 
+
+Route::post('/funcionario/store', function (Request $request) {
+    Funcionario::create($request->all());
+    return redirect()->route('projecto');
+})->middleware(['auth', 'verified'])->name('funcionario.store');
+
+Route::put('/projecto/update/{projeto}', function (Request $request,$id) {
+    $projecto = Projecto::findOrFail($id);
+    $projecto->update($request->all());
+    return redirect()->back();
+})->middleware(['auth', 'verified'])->name('projecto.update');
+
 Route::get('/projecto/show/{projeto}', function ($request) {
     $projecto = Projecto::firstWhere('referencia','=',$request);
     $relatorios = Relatorio::orderBy('created_at','desc')->where('refProjecto','=',$request)->paginate(5);
+    // $relatorios = Relatorio::paginate(5);
     // dd($projecto);
     return  view('projecto.show',compact('projecto','relatorios'));
 })->middleware(['auth', 'verified'])->name('projecto.show');
 
 Route::get('/relatorio', function () {
+    $relatorios = Relatorio::orderBy('created_at','desc')->paginate(5);
+    
     if (isset($request)) {
         $termoPesquisa = $request->input('pesquisar');
         $relatorioPesquisa = Projecto::where('name', 'like', "%{$termoPesquisa}%")
@@ -112,10 +136,27 @@ Route::get('/relatorio', function () {
 
         return view('relatorio.index', ['relatorioPesquisa' => $relatorioPesquisa,'projectos'=>'','funcionarios','']);
     } else {
-        $relatorios = Projecto::orderBy('created_at','desc')->paginate(5);
-        return view('relatorio.index')->with(['relatorios',$relatorios,'relatorioPesquisa','','funcionarios','']);
+        $relatorios = Relatorio::orderBy('created_at','desc')->paginate(5);
+        return view('relatorio.index')->with(['relatorios'=>$relatorios,'relatorioPesquisa'=>'','funcionarios'=>'']);
     }
 })->middleware(['auth', 'verified'])->name('relatorio');
+
+
+Route::get('/funcionario', function () {
+    $funcionarios = Funcionario::orderBy('created_at','desc')->paginate(5);
+    
+    if (isset($request)) {
+        $termoPesquisa = $request->input('pesquisar');
+        $funcionarioPesquisa = Funcionario::where('nome', 'like', "%{$termoPesquisa}%")
+                            ->orWhere('categoria', 'like', "%{$termoPesquisa}%")
+                            ->paginate(5);
+
+        return view('funcionario.index', ['funcionarioPesquisa' => $funcionarioPesquisa,'projectos'=>'']);
+    } else {
+        $funcionarios = Funcionario::orderBy('created_at','desc')->paginate(5);
+        return view('funcionario.index')->with(['funcionarios'=>$funcionarios,'funcionarioPesquisa'=>'']);
+    }
+})->middleware(['auth', 'verified'])->name('funcionario');
 
 Route::get('/notificacao', function () {
     return view('notificacao.index');
@@ -129,13 +170,41 @@ Route::middleware('auth')->group(function () {
     
     Route::post('/relatorio/store', function (Request $request) {
         Relatorio::create($request->all());
+        // dd($request);
         return redirect()->route('projecto');
-    })->name('projecto.store');
+    })->name('relatorio.store');
+
     Route::get('/relatorio/create/{referencia}', function ( $request) {
         // dd($request);
-        return view('relatorio.create');
+        $refer = $request;
+        
+        return view('relatorio.create')->with('refer',$refer);
     })->name('relatorio.create');
+
+    Route::get('/funcionario/create/{referencia}', function ( $request) {
+        dd($request);
+        $refer = $request;
+        return redirect()->route('projecto');
+    })->name('funcionario.create');
+
+    Route::get('/relatorio/{id}/visualizar', function($request){
+        // dd($request);
+        $relatorio = Relatorio::findOrFail($request);
+        $pdf = PDF::loadView('relatorio.pdf', compact('relatorio'));
+        return $pdf->stream('relatorio.pdf');
+    })->name('relatorio.visualizar');
+
+    Route::get('/relatorio/{id}/baixar', function($request){
+        $relatorio = Relatorio::findOrFail($request);
+        $pdf = PDF::loadView('relatorio.pdf', compact('relatorio'));
+        return $pdf->download('relatorio.pdf');
+    })->name('relatorio.baixar');
+
+
 });
 
+route::get('/teste/user/index',function(){
+    return view('users.index');
+});
 
 require __DIR__.'/auth.php';

@@ -11,10 +11,30 @@ class Relatorio extends Model
     protected $table = 'relatorio';
 
     protected $fillable = [
-        'dia',
+        'refProjecto',
         'descricao',
-        'tipo',
         'relatorio',
-        
+        'printedSite',
+        'codeConduct',
+        'updateSite',
+        'workSchedule',
+        'chartOrgan',
+        'number',
+        'totalSub',
+        'delivery',
+        'report',
+        'analytical',
+        'totalSub1',
+        'printedSiteStatus',
+        'codeConductStatus',
+        'updateSiteStatus',
+        'workScheduleStatus',
+        'chartOrganStatus',
+        'numberStatus',
+        'totalSubStatus',
+        'deliveryStatus',
+        'reportStatus',
+        'analyticalStatus',
+        'totalSub1Status'
     ];
 }

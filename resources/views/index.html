@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Abas</title>
-    <!-- Inclua o Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Inclua o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <div class="container mt-4">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -74,7 +75,11 @@
                 @include('relatorio.relatorios.relatorioi')
             </div>
             <div id="relatorioii" class="tab-pane fade">
-                @include('relatorio.relatorios.relatorioii')
+                <?php echo 'olá'; ?>
+                <?php                    
+                    echo 'Olá, visitante!';                    
+                ?>
+
             </div>
         </div>  
     </div>

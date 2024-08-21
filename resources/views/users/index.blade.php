@@ -34,7 +34,7 @@
                             <thead class=" ">
                                 <tr class='h6'>
                                     <th scope="col"  class="text-nowrap">Nome do usuário</th>
-                                    <th scope="row"  class="text-nowrap">email</th>
+                                    <th scope="row"  class="text-nowrap">Endereço electrónico</th>
                                     <th scope="row"  class="text-nowrap">Tipo de usuário</th>
                                     <th scope="col" class="">Ação</th>
                                 </tr>

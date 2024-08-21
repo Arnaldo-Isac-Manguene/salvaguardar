@@ -12,7 +12,15 @@ class RelatorioController extends Controller
      */
     public function index()
     {
-        //
+        
+// printedSite
+// codeConduct
+// updateSite
+// number
+// workSchedule
+// chartOrgan
+// number
+// totalSub
     }
 
     /**

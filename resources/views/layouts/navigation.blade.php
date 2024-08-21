@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-9 w-auto fill-current bg-pistachio" />
                     </a>
                 </div>
 
@@ -23,6 +23,8 @@
                     </x-nav-link>
                     <x-nav-link :href="route('notificacao')" :active="request()->routeIs('notificacao')">
                         {{ __('Notificação') }}
+                    </x-nav-link><x-nav-link :href="route('funcionario')" :active="request()->routeIs('funcionario')">
+                        {{ __('Funcionarios') }}
                     </x-nav-link>
                     @if (Auth::user()->type == "admin" || Auth::user()->type == "esp")
                         <x-nav-link :href="route('usuario.index')" :active="request()->routeIs('usuario.index')">
@@ -74,8 +76,8 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+            <div class="-me-2 flex bg-pistachio items-center sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md bg-pistachio hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,6 +93,23 @@
             <x-responsive-nav-link  class="text-end" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            
+            <x-responsive-nav-link  class="text-end" :href="route('projecto')" :active="request()->routeIs('projecto')">
+                {{ __('Projecto') }}
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link  class="text-end" :href="route('relatorio')" :active="request()->routeIs('relatorio')">
+                {{ __('Relatório') }}
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link  class="text-end" :href="route('notificacao')" :active="request()->routeIs('notificacao')">
+                {{ __('Notificação') }}
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link  class="text-end" :href="route('usuario.index')" :active="request()->routeIs('usuario.index')">
+                {{ __('Usuários') }}
+            </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
@@ -119,3 +138,9 @@
         </div>
     </div>
 </nav>
+<style>
+    .bg-pistachio{
+        background-color: #679e53;
+        /* background-color: #9fcd90; */
+    }
+</style>

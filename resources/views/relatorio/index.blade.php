@@ -28,7 +28,8 @@
                     </div>
                 </div>
                 <div class="min-h-40 ms-3">
-                @if (empty($relatotio))
+                   
+                @if (empty($relatorios))
                     @if (isset($relatorioPesquisa))
 
                         <table class="table table-responsive">
@@ -75,23 +76,22 @@
                                 <tr class='h6'>
                                     <th scope="col"  class="text-nowrap">Referência</th>
                                     <th scope="row"  class="text-nowrap">Name of the PIU</th>
-                                    <th scope="row"  class="text-nowrap">Descrição do Projeto</th>
+                                    <th scope="row"  class="text-nowrap">Descrição do Relatório</th>
                                     <th scope="col"  class="text-nowrap">Preparado Por</th>
-                                    <th scope="col">Progresso</th>
                                     <th scope="col" class="">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($projectos as $projecto)
+                                @foreach ($relatorios as $projecto)
                                     <tr class="">
-                                        <td scope="col">{{ $projecto->referencia }}</td>
+                                        <td scope="col">{{ $projecto->descricao }}</td>
                                         <td  class="text-nowrap">{{ $projecto->namePIU }}</td>
                                         <td >{{ $projecto->descricao }}</td>
                                         <td class="">{{ $projecto->preparadoPor }}</td>
-                                        <td class="text-nowrap">{{ $projecto->estado }}</td>
                                         <td class="w-auto d-flex ">
-                                            <a href="#" class="me-1 btn btn-primary text-nowrap">Ver mais</a>
-                                            <!-- <a href="#" class="btn btn-warning">Imprimir</a> -->
+                                            <a href="{{ route('relatorio.visualizar', $projecto->id) }}" class="btn btn-outline-info me-1" id="btn-apagar">Visualizar</a>
+                                            {{-- <a href="#" class="btn btn-outline-danger" id="btn-apagar">Apagar</a> --}}
+                                            <a href="{{ route('relatorio.baixar', $projecto->id) }}" class="btn btn-outline-warning" id="btn-apagar"><i class="fa fas-edit">Baixar</i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -99,7 +99,7 @@
                             </tbody>
                         </table>
                         <div class="mb-2 me-3">
-                            {!! $projectos->links() !!}
+                            {!! $relatorios->links() !!}
                         </div>
                     </div>
                     @endif

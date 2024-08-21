@@ -67,6 +67,16 @@ return [
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
 
+    // 'providers' => [
+    //     Barryvdh\DomPDF\ServiceProvider::class,
+    //     Illuminate\Filesystem\FilesystemServiceProvider::class,
+    // ],
+
+    // 'aliases' => [
+    //     'PDF' => Barryvdh\DomPDF\Facade::class,
+    //     'File' => Illuminate\Support\Facades\File::class,
+    // ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -78,11 +88,11 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'pt'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'pt'),
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale' => env('APP_FAKER_LOCALE', 'pt_PT'),
 
     /*
     |--------------------------------------------------------------------------

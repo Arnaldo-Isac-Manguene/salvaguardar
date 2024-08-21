@@ -3,25 +3,28 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="novo-projecto">
-                    Novo Projecto <?php $data = date('ymHis') ?>
-                </h5>
+                <h4 class="modal-title" id="novo-projecto">
+                    Novo Projecto <?php $data = date('ymHis'); $dia = date('d/m/Y') ?>
+                </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
             </div>
             <div class="modal-body">
-            <p class="ps-3"><b>referencia: </b>REF{{ $data }}</p>
+            
             <form action="{{route('projecto.store')}}" class="margin-start:-20px" method="POST">
                 {{ csrf_field() }}
-
+                    
                     <div class="container-fluid">
+                        <label class="col-7"><b>Referencia: </b>REF{{ $data }}</label>
+                        <label class="col-4 "><b>Data: </b>{{ $dia }}</label>
                         <div class="mb-3">
                             <label for="project-piu" class="form-label">Name of the PIU</label>
                             <input type="text" class="form-control" name="namePIU" id="project-piu" aria-describedby="helpId" placeholder="" />
-                            <small id="helpId" class="form-text text-muted">PIU</small>
+                            {{-- <small id="helpId" class="form-text text-muted">PIU</small> --}}
                         </div>
                         <div class="mb-3">
-                            <label for="project-name" class="form-label">Descrição do Projeto</label>
+                            <label for="project-name" class="form-label">Project name</label>
+                            {{-- <textarea  name="descricao" id="project-name" cols="30" rows="3"></textarea> --}}
                             <input type="text" class="form-control" name="descricao" id="project-name" aria-describedby="helpId" placeholder="" />
                         </div>
                         <div class="mb-3 hidden">
@@ -31,33 +34,27 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="preparadoPor" class="form-label">Preparado por</label>
-                            <select
-                                class="form-select form-select-sm"
+                            <label for="preparadoPor" class="form-label">Prepared by</label>
+                            <input
+                                type="text"
+                                class="form-control form-control-sm"
                                 name="preparadoPor"
-                                id="preparadoPor"
-
-                            >
-                            <option selected>selecione</option>
-                            
-                            </select>
+                                id="preparadoPor"                            
+                            />
 
                         </div>
-                            <label for="aprovadoPor" class="form-label">Aprovado por</label>
-                            <select
-                                class="form-select form-select-sm"
+                        <div class="mb-3">
+                            <label for="aprovadoPor" class="form-label">Approved by</label>
+                            <input
+                                type="text"
+                                class="form-control form-control-sm"
                                 name="aprovadoPor"
-                                id="aprovadoPor"
-                            >
-                                <option selected>selecione</option>
-                            </select>
-
-                        <div class="mb-3">
-
+                                id="aprovadoPor"                            
+                            />
                         </div>
 
                         <div class="mb-3">
-                            <label for="project-subproj" class="form-label">Contrato do sub-projeto</label>
+                            <label for="project-subproj" class="form-label">Sub-project Contract</label>
                             <input type="text" class="form-control" name="contratoSubprojecto" id="contratoSubprojecto" placeholder="" />
                         </div>
 
@@ -65,10 +62,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Fechar
+                        Close
                     </button>
                     <button href="{{ route('projecto.create') }}" type="submit" class="btn btn-primary">
-                        Salvar
+                        Save
                     </button>
                 </form>
             </div>
